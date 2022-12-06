@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+
+
+
+<body id="page-top">
+
+    <div id="i18n_eliminar_cliente" th:text="#{text.cliente.eliminarOk}" style="display: none;"></div>
+
+			
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        	<div th:replace="layout/layout :: menuLateral"></div>      
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                	<div th:replace="layout/layout :: barraSuperior"></div>      
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Formulario Cita</h1>
+                        
+                    </div>
+                    
+                    
+                    
+				<div th:object="${cita}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+						role="alert">
+						<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+
+				<form th:action="@{/citas/form}" th:object="${cita}" method="post"
+					enctype="multipart/form-data">
+								
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label" th:text="#{text.cliente.especialidad}"></label>
+						<div class="col-sm-6">
+						
+						<select id="slcEspecialidades" th:field="*{especialidad}" class="form-control" th:errorclass="'form-control alert-danger'">
+						    <option th:each="i : ${listaEspecialidades}" th:value="${i.id}" th:text="${i.nombre}" 
+						      th:selected="${i.id}"></option>
+						</select>
+						<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('especialidad')}" th:errors="*{especialidad}"></small>							
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label" th:text="#{text.cliente.doctor}"></label>
+						<div class="col-sm-6">
+						
+						<select id="slcDoctores" th:field="*{doctor}" class="form-control" th:errorclass="'form-control alert-danger'">
+						    <option th:each="i : ${listaDoctores}" th:value="${i.id}" th:text="${i.nombres + ' ' + i.apellidos}" 
+						      th:selected="${i.id}"></option>
+						</select>
+						<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('doctor')}" th:errors="*{doctor}"></small>							
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="fechaCita" class="col-sm-2 col-form-label" th:text="#{text.cita.fechacita}">Fecha</label>
+						<div class="col-sm-6">
+							<input type="date" class="form-control" th:field="*{fechaCita}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('fechaCita')}" th:errors="*{fechaCita}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="horaCita" class="col-sm-2 col-form-label" th:text="#{text.cita.horacita}">Fecha</label>
+						<div class="col-sm-6">
+							<input type="time" class="form-control" th:field="*{horaCita}"
+								th:errorclass="'form-control alert-danger'" min="07:30" max="18:00"/> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('horaCita')}" th:errors="*{horaCita}"></small>
+						</div>
+					</div>
+					 <div class="form-group row">
+						<label for="observaciones" class="col-sm-2 col-form-label">Obervaciones</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{observaciones}" class="form-control" maxlength="100"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="tarifa" class="col-sm-2 col-form-label">Tarifa</label>
+						<div class="col-sm-6">
+							<input type="number" th:field="*{tarifa}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('tarifa')}" th:errors="*{tarifa}"></small>
+						</div>
+					</div>
+					<!--<div class="form-group row">
+						<label for="createAt" class="col-sm-2 col-form-label" th:text="#{text.cliente.createAt}">Fecha</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" th:field="*{createAt}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="file" class="col-sm-2 col-form-label" th:text="#{text.cliente.foto}">Foto</label>
+						<div class="col-sm-6">
+							<input type="file" name="file" class="form-control" />
+						</div>
+					</div> -->
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+			
+                    
+
+                   
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+	<footer th:replace="layout/layout :: footer"></footer>
+	<script th:replace="citas/js/cargar-doctores :: javascript"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<script type="text/javascript" th:fragment="javascript">
+		$(document).ready(function() {
+			
+			$('#slcEspecialidades').on('change', function() {
+			
+				  
+				$.ajax({
+					url : "/doctor/cargar-doctores/" + this.value,
+					dataType : "json",
+					data : {
+						term : this.value
+					},
+					success : function(data) {
+						console.log(data);
+						var html = "";
+						$.map(data, function(item) {
+							html += "<option value=" + item.id + ">" + item.nombres + " " + item.apellidos + "</option>";
+						});
+						
+						$("#slcDoctores").html(html);
+						
+					},
+				});
+			});
+			
+
+			$("#buscar_producto").autocomplete({
+
+				source : function(request, response) {
+					$.ajax({
+						url : "/especialidad/cargar-especialidades/" + request.term,
+						dataType : "json",
+						data : {
+							term : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									value : item.id,
+									label : item.nombre//,
+									//precio : item.id,
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					$("#buscar_producto").val(ui.item.label);
+					
+					/*if(itemsHelper.hasProducto(ui.item.value)){
+						itemsHelper.incrementaCantidad(ui.item.value, ui.item.precio);
+						return false;
+					}*/
+					
+					var linea = $("#plantillaItemsFactura").html();
+					
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{NOMBRE}/g, ui.item.label);
+					//linea = linea.replace(/{PRECIO}/g, ui.item.precio);
+					
+					$("#cargarItemProductos tbody").append(linea);
+					//itemsHelper.calcularImporte(ui.item.value, ui.item.precio, 1);
+
+					return false;
+				}
+			});
+			
+			$("form").submit(function(){
+				$("#plantillaItemsFactura").remove();
+				return;
+			});
+
+		});
+		
+		var itemsHelper = {
+			hasProducto: function(id){
+				
+				var resultado = false;
+				
+				$('input[name="item_id[]"]').each(function(){
+					if(parseInt(id) == parseInt($(this).val()) ){
+						resultado = true;
+					}
+				});
+				
+				return resultado;
+			},
+			eliminarLineaFactura: function(id){
+				$("#row_" + id).remove();
+				this.calcularGranTotal();
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+
+<body id="page-top">
+
+    <div id="i18n_eliminar_cliente" th:text="#{text.cliente.eliminarOk}" style="display: none;"></div>
+
+			
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        	<div th:replace="layout/layout :: menuLateral"></div>      
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                	<div th:replace="layout/layout :: barraSuperior"></div>      
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        
+                    </div>
+						
+					<div th:object="${paciente}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+						role="alert">
+						<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+
+				<form th:action="@{/paciente/form}" th:object="${paciente}" method="post"
+					enctype="multipart/form-data">
+					
+					<div class="form-group row">
+						<label for="identificacion" class="col-sm-2 col-form-label" th:text="#{text.doctor.identificacion}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{identificacion}" class="form-control"
+								th:errorclass="'form-control alert-danger'" disabled="disabled" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('identificacion')}" th:errors="*{identificacion}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label" th:text="#{text.doctor.nombres}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombres}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombres')}" th:errors="*{nombres}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="apellidos" class="col-sm-2 col-form-label" th:text="#{text.doctor.apellidos}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{apellidos}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="direccion" class="col-sm-2 col-form-label" th:text="#{text.doctor.direccion}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{direccion}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+						</div>
+					</div>		
+					<div class="form-group row">
+						<label for="ciudad" class="col-sm-2 col-form-label" th:text="#{text.doctor.direccion}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{ciudad}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></small>
+						</div>
+					</div>				
+					<div class="form-group row">
+						<label for="correo" class="col-sm-2 col-form-label" th:text="#{text.doctor.correo}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{correo}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="telefonos" class="col-sm-2 col-form-label" th:text="#{text.doctor.telefonos}"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{telefonos}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('telefonos')}" th:errors="*{telefonos}"></small>
+						</div>
+					</div>	
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>		
+				</form>
+						
+                   
+                   
+                   
+                   
+                   
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
