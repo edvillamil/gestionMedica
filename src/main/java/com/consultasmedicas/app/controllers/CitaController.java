@@ -1,6 +1,5 @@
 package com.consultasmedicas.app.controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,11 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,7 +23,6 @@ import org.springframework.security.web.servletapi.SecurityContextHolderAwareReq
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,7 +33,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.consultasmedicas.app.models.entity.Cita;
 import com.consultasmedicas.app.models.entity.Doctor;
-import com.consultasmedicas.app.models.entity.Especialidad;
 import com.consultasmedicas.app.models.entity.Estado;
 import com.consultasmedicas.app.models.entity.Paciente;
 import com.consultasmedicas.app.models.service.ICitaService;
