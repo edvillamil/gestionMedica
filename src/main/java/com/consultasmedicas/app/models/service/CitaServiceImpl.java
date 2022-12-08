@@ -15,9 +15,12 @@ import com.consultasmedicas.app.models.entity.Cita;
 
 @Service
 public class CitaServiceImpl implements ICitaService {
-	
-	@Autowired
+
 	private ICitaDao citaDao;
+	
+	public CitaServiceImpl(ICitaDao citaDao) {
+        this.citaDao = citaDao;
+    }
 
 	@Override
 	@Transactional(readOnly = true)
