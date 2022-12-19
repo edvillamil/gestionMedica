@@ -59,6 +59,7 @@ INSERT INTO `authorities` (user_id, authority) VALUES (3,'ROLE_DOCTOR');
 INSERT INTO estados (nombre) VALUES('ACTIVO');
 INSERT INTO estados (nombre) VALUES('CANCELADO');
 INSERT INTO estados (nombre) VALUES('INACTIVO');
+INSERT INTO estados (nombre) VALUES('ATENDIDA');
 
 /** Creacion de especialidades */
 INSERT INTO especialidades (nombre, create_at) VALUES('Odontología', NOW());
@@ -67,10 +68,12 @@ INSERT INTO especialidades (nombre, create_at) VALUES('Medicina General', NOW())
 INSERT INTO especialidades (nombre, create_at) VALUES('Cardiología', NOW());
 
 /** Creacion de doctores */
-INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','doctor 1','apellido 1','3204960202', 3);
-INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','doctor 2','apellido 2','3204960202', null);
-INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','doctor 3','apellido 3','3204960202', null);
-INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','doctor 4','apellido 4','3204960202', null);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Pedro Luis','Cardenaz','3204960202', 3);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Mauricio','Bohorquez','3204960202', null);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Andres','Rodriguez','3204960202', null);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Constanza','Pachon','3204960202', null);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Esperanza','Carrillo','3204960202', null);
+INSERT INTO doctores (correo,create_at,direccion,nombres,apellidos,telefono, username) VALUES ('correo@correo.com',now(),'cra 14 #20-15','Javier','Hernandez','3204960202', null);
 
 
 /** Creacion de pacientes */
@@ -85,10 +88,10 @@ INSERT INTO pacientes (identificacion,apellidos,ciudad,correo,create_at,direccio
 
 /* Creacion de Citas */
 INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'09:20',1,1,1,50000,1);
-INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'10:23',1,2,1,50000,1);
-INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'13:30',1,3,1,50000,1);
-INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'07:00',1,1,2,50000,1);
-INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'15:30',2,1,2,50000,1);
+INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'10:23',2,2,1,50000,1);
+INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'13:30',3,3,1,50000,1);
+INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'07:00',4,1,2,50000,4);
+INSERT INTO citas (create_at,hora_cita,id_doctor,id_especialidad,id_paciente, tarifa, id_estado) VALUES (now(),'15:30',2,1,2,50000,4);
 
 /* Especialidades doctores*/
 INSERT INTO especialidades_doctores (id_doctor,id_especialidad) VALUES (1,1);

@@ -12,7 +12,6 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.xml.MarshallingView;
 
-import com.consultasmedicas.app.models.entity.Cliente;
 
 @Component("listar.xml")
 public class ClienteListXmlView extends MarshallingView{
@@ -32,12 +31,12 @@ public class ClienteListXmlView extends MarshallingView{
 		model.remove("page");
 		
 		
-		Page<Cliente> clientes = (Page<Cliente>) model.get("clientes");
+		/*Page<Cliente> clientes = (Page<Cliente>) model.get("clientes");
 		
 		model.remove("clientes");
 		model.put("clienteList", new ClienteList(clientes.getContent()));
 		
-		super.renderMergedOutputModel(model, request, response);
+		super.renderMergedOutputModel(model, request, response);*/
 	}
 	
 	

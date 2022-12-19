@@ -12,7 +12,8 @@ import org.supercsv.io.CsvBeanWriter;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.consultasmedicas.app.models.entity.Cliente;
+import com.consultasmedicas.app.models.entity.Paciente;
+
 
 @Component("listar")
 public class ClienteCsvView extends AbstractView {
@@ -35,14 +36,14 @@ public class ClienteCsvView extends AbstractView {
 		response.setContentType(getContentType());
 
 		
-		Page<Cliente> clientes = (Page<Cliente>) model.get("clientes");
+		Page<Paciente> pacientes = (Page<Paciente>) model.get("clientes");
 		
 		ICsvBeanWriter beanWriter = new CsvBeanWriter(response.getWriter(),  CsvPreference.STANDARD_PREFERENCE);
 		
 		String[] header = {"id", "nombre", "apellido", "email", "createAt"};
 		beanWriter.writeHeader(header);
 		
-		for(Cliente cliente: clientes) {
+		for(Paciente cliente: pacientes) {
 			beanWriter.write(cliente, header);
 		}
 		

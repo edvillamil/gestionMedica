@@ -4,7 +4,6 @@ import java.util.List;
 
 
 import com.consultasmedicas.app.models.entity.Especialidad;
-import com.consultasmedicas.app.models.entity.Producto;
 
 public interface IEspecialidadService {
 

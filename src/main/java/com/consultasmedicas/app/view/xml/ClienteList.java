@@ -4,25 +4,24 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
-import com.consultasmedicas.app.models.entity.Cliente;
+import com.consultasmedicas.app.models.entity.Paciente;
 
 @XmlRootElement(name="clientesList")
 public class ClienteList {
 	
 	@XmlElement(name="cliente")
-	public List<Cliente> clientes;
+	public List<Paciente> pacientes;
 
-	public ClienteList(List<Cliente> clientes) {
+	public ClienteList(List<Paciente> pacientes) {
 		super();
-		this.clientes = clientes;
+		this.pacientes = pacientes;
 	}
 	
 	public ClienteList() {
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
+	public List<Paciente> getClientes() {
+		return pacientes;
 	}
 	 
 	

@@ -14,8 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.consultasmedicas.app.models.entity.Factura;
-import com.consultasmedicas.app.models.entity.ItemFactura;
+import com.consultasmedicas.app.models.entity.Cita;
 import com.lowagie.text.Document;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.pdf.PdfPCell;
@@ -37,7 +36,7 @@ public class FacturaPdfView extends AbstractPdfView{
 		
 		Locale locale = localeResolver.resolveLocale(request);
 		
-		Factura factura = (Factura)model.get("factura");
+		Cita factura = (Cita)model.get("factura");
 		
 		PdfPTable tabla = new PdfPTable(1);
 		
@@ -52,8 +51,8 @@ public class FacturaPdfView extends AbstractPdfView{
 		cell.setPadding(8f);		
 		tabla.addCell(cell);
 		
-		tabla.addCell(factura.getCliente().getNombre() + " " + factura.getCliente().getApellido());
-		tabla.addCell(factura.getCliente().getEmail());
+		//tabla.addCell(factura.getCliente().getNombre() + " " + factura.getCliente().getApellido());
+		//tabla.addCell(factura.getCliente().getEmail());
 		
 		PdfPTable tabla2 = new PdfPTable(1);
 		tabla2.setSpacingAfter(20);
@@ -64,8 +63,8 @@ public class FacturaPdfView extends AbstractPdfView{
 		tabla2.addCell(cell);
 		
 		tabla2.addCell(mensajes.getMessage("text.cliente.factura.folio") + ":" + factura.getId());
-		tabla2.addCell(mensajes.getMessage("text.cliente.factura.descripcion") + ":" + factura.getDescripcion() );
-		tabla2.addCell(mensajes.getMessage("text.cliente.factura.fecha") + ":" + factura.getCreateAt());
+		//tabla2.addCell(mensajes.getMessage("text.cliente.factura.descripcion") + ":" + factura.getDescripcion() );
+		//tabla2.addCell(mensajes.getMessage("text.cliente.factura.fecha") + ":" + factura.getCreateAt());
 		
 		document.add(tabla);
 		document.add(tabla2);
@@ -77,7 +76,7 @@ public class FacturaPdfView extends AbstractPdfView{
 		tabla3.addCell(mensajes.getMessage("text.factura.form.item.cantidad"));
 		tabla3.addCell(mensajes.getMessage("text.factura.form.item.total"));
 		
-		for( ItemFactura item : factura.getItems()) {
+		/*for( ItemFactura item : factura.getItems()) {
 			tabla3.addCell(item.getProducto().getNombre());
 			tabla3.addCell(item.getProducto().getPrecio().toString());
 			
@@ -91,7 +90,7 @@ public class FacturaPdfView extends AbstractPdfView{
 		cell.setColspan(3);
 		cell.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
 		tabla3.addCell(cell);
-		tabla3.addCell(factura.getTotal().toString());
+		tabla3.addCell(factura.getTotal().toString());*/
 		
 		document.add(tabla3);		
 	}
