@@ -16,8 +16,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.document.AbstractXlsxView;
 
-import com.consultasmedicas.app.models.entity.Factura;
-import com.consultasmedicas.app.models.entity.ItemFactura;
 
 @Component("factura/ver.xlsx")
 public class FacturaXlsxView extends AbstractXlsxView{
@@ -28,7 +26,7 @@ public class FacturaXlsxView extends AbstractXlsxView{
 		
 		response.setHeader("Content-Disposition", "attachment; filename=\"factura_view.xlsx\"");
 		
-		Factura factura = (Factura)model.get("factura");
+		/*Factura factura = (Factura)model.get("factura");
 		Sheet sheet = workbook.createSheet("Factura Spring");
 		
 		Row row = sheet.createRow(0);
@@ -105,7 +103,7 @@ public class FacturaXlsxView extends AbstractXlsxView{
 		
 		cell = filaTotal.createCell(3);
 		cell.setCellValue(factura.getTotal());
-		cell.setCellStyle(tbodyStyle);
+		cell.setCellStyle(tbodyStyle);*/
 		
 	}
 	

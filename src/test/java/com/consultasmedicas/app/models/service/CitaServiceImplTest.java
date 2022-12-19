@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.consultasmedicas.app.models.entity.Cita;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = "spring.datasource.url=jdbc:mysql://localhost/db_consultasmedicas_pru?useSSL=false&serverTimezone=UTC")
+//@SpringBootTest(properties = "spring.datasource.url=jdbc:mysql://localhost/db_consultasmedicas_pru?useSSL=false&serverTimezone=UTC")
 class CitaServiceImplTest {
 	
 	
